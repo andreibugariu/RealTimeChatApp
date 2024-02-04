@@ -1,0 +1,25 @@
+
+
+.form-page{
+    height: 100lvh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: royalblue;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+  background-color: #00000076;
+  border-radius: 2rem;
+  padding: 3rem 4rem;
+}
+
+.white-text {
+  color: white;
+}
+
