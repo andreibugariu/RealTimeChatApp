@@ -5,7 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import { redirect } from "react-router-dom";
 import axios from 'axios'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -15,26 +15,26 @@ const Register = () => {
         confirm_password: ''
     });
 
+    const navigate = useNavigate();
     const [showError, setShowError] = useState(false)
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (values.password !== values.confirm_password) {
             setShowError(true)
         } else {
             setShowError(false)
-            axios.post('http://localhost:5000/api/register', {
+            try {
+                const {data} = await axios.post('http://localhost:5000/api/register', {
                 username: values.username,
                 email: values.email,
                 password: values.password,
                 confirm_password: values.confirm_password
-            }).then(res => {
-                console.log(res)
-            }).catch(err => {
-                console.log(err)
-            })
-            alert("Successfully created the user")
-            
+                })
+                navigate("/login");
+            } catch (err) {
+                alert("something goes wrong")
+            }
         }
         
     };
