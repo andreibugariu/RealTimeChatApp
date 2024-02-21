@@ -4,8 +4,12 @@ const Users = require("../model/userModel")
 require("dotenv").config();
 
 
+const api_avatar = "https://ui-avatars.com/api/?";
+
+
 const register = async (req, res, next) => { 
     const { username, email, password, confirm_password } = req.body;
+    const set_avatar = api_avatar + username;
 
     if (password !== confirm_password) {
        return  res.json({ message: "Please provide the correct password" });
@@ -15,7 +19,8 @@ const register = async (req, res, next) => {
         const createUser = await Users.create({
         userName: username,
         email: email,
-        password: hashedPassword
+        password: hashedPassword,
+        avatarImg: set_avatar
         }) 
         res.json({message: "Successfully created new User"})
     } catch (err) {
@@ -49,12 +54,21 @@ const test = async (req, res, next)=>{
     res.send(req.user)
 }
 
-
+const getUserByID = async (req, res, next) => {
+    const id = req.params.id;
+    try {
+        const user = await Users.findById(id);
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(400).json({message : "Error "+err})
+    }
+}
 
 
 module.exports = {
     register,
     login,
     test,
-    logout
+    logout,
+    getUserByID
 }

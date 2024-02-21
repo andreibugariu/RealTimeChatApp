@@ -16,13 +16,9 @@ const userSChema = new mongoose.Schema({
         type: String,
         require: true
     },
-    isAvatarImgSet: {
-        type: Boolean,
-        default: false
-    },
     avatarImg: {
         type: String,
-        default: ""
+        require: true
     }
 })
 

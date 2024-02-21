@@ -2,7 +2,6 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
-import { redirect } from "react-router-dom";
 import axios from 'axios'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
