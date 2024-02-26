@@ -22,7 +22,7 @@ const Login = () => {
                 })
                 if (response.status === 200) {
                     localStorage.setItem("user_id", response.data.user_id)
-                    navigate("/register");
+                    navigate("/");
                 } else {
                     throw(Error("Invalid credentials"))
                 }

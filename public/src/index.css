@@ -23,3 +23,60 @@
   color: white;
 }
 
+.full-chat{
+  height: 100vh;
+  width: 100vw;
+  background: blue;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.container-chat{
+    height: 85vh;
+    width: 85vw;
+    background-color: darkblue;
+    display: grid;
+    grid-template-columns: 25% 75%;
+
+}
+
+/* .Chat-Contacts{
+    display: grid;
+    grid-template-rows: 10% 75% 15%;
+    overflow: hidden;
+    background-color: #080420;
+}
+
+.contacts{
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: auto;
+      gap: 0.8rem;
+    
+      &::-webkit-scrollbar {
+        width: 0.2rem;
+    
+        &-thumb {
+          background-color: #ffffff39;
+          width: 0.1rem;
+          border-radius: 1rem;
+        }
+      }
+
+}
+
+.contact{
+        background-color: #ffffff34;
+          min-height: 5rem;
+          cursor: pointer;
+          width: 90%;
+          border-radius: 0.2rem;
+          padding: 0.4rem;
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          transition: 0.5s ease-in-out;
+} */

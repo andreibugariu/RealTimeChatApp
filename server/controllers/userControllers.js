@@ -4,7 +4,7 @@ const Users = require("../model/userModel")
 require("dotenv").config();
 
 
-const api_avatar = "https://ui-avatars.com/api/?";
+const api_avatar = "https://ui-avatars.com/api/?name=";
 
 
 const register = async (req, res, next) => { 
@@ -64,11 +64,20 @@ const getUserByID = async (req, res, next) => {
     }
 }
 
+const getAllUsers = async (req, res, next) => {
+    try {
+        const users = await Users.find();
+        res.status(200).json(users)
+    } catch (err) {
+        res.status(400).json({message: "Can't get all users"})
+    }
+}
 
 module.exports = {
     register,
     login,
     test,
     logout,
-    getUserByID
+    getUserByID,
+    getAllUsers
 }
