@@ -2,10 +2,22 @@ import React from 'react'
 import styled from "styled-components";
 import ChatInput from './ChatInput';
 import Messages from './Messages';
+import axios from 'axios'
 
-const ChatContainer = ({ chatUser }) => {
+const ChatContainer = ({ chatUser, currentUser }) => {
     
-    const handleSendMsg =  async  (msg) => {
+    const handleSendMsg = async (msg) => {
+        
+        try {
+            const result = await axios.post("http://localhost:5000/api/addmsg", {
+                sender: currentUser._id,
+                receiver: chatUser._id,
+                msg: msg
+            })
+        } catch (err) {
+            console.log("error can't send the message")
+        }
+
     }
     return (
     <>
@@ -20,7 +32,7 @@ const ChatContainer = ({ chatUser }) => {
                         </div>
                     </div>
                 </div>
-                <Messages/>
+                <Messages sender={currentUser} receiver={chatUser} />
                 <ChatInput handleSendMsg={handleSendMsg} />
         </Container>
     </>
@@ -28,7 +40,7 @@ const ChatContainer = ({ chatUser }) => {
 }
 
 const Container = styled.div`
-    padding-top: 1rem;
+
         .chat-header{
             display: flex;
             justify-content: space-between;
@@ -50,6 +62,8 @@ const Container = styled.div`
                 }
             }
         }
+
+    /
 `;
 
 export default ChatContainer

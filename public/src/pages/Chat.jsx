@@ -51,7 +51,7 @@ const Chat = () => {
         <div className='container-chat'>
           <Contacts contacts={contacts} user={currentUser} changeChat={handleChatChange} />
           {
-            currentChat === undefined ? <p>Please, select a person</p> : <ChatContainer chatUser={currentChat} />
+            currentChat === undefined ? <p>Please, select a person</p> : <ChatContainer chatUser={currentChat} currentUser={currentUser} />
           }
         </div>
       </div>

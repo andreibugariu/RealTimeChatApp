@@ -5,12 +5,14 @@ const mongoose = require("mongoose");
 const app = express();
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/userRoutes');
+const messageRoutes = require('./routes/messageRoutes')
 require("dotenv").config();//In this way we acces dot.end
 
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(userRoutes);
+app.use(messageRoutes);
 
 
 
