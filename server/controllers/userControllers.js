@@ -37,9 +37,9 @@ const login = async (req, res, next) => {
         if (!is_password_valid) {
             return res.status(401).send({message:"Incorrect email or password"})
         }
-        const token = jwt.sign({ id: user._id }, process.env.SECRET);
+        const token = jwt.sign({ id: user._id }, process.env.SECRET,{expiresIn : "1h"});
         res.cookie('token', token, { httpOnly: true });
-        res.send({ "user_id": user._id })
+        res.send({ "user_id": user._id , "token": token})
     } catch (err) {
         res.status(401).send({message: "Incorrect username or password"})
     }

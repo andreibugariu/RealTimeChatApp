@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Login = () => {
     const [values, setValues] = useState({
@@ -22,6 +23,7 @@ const Login = () => {
                 })
                 if (response.status === 200) {
                     localStorage.setItem("user_id", response.data.user_id)
+                    Cookies.set('token', response.data.token, { expires: 1 }); // Expires in 7 days
                     navigate("/");
                 } else {
                     throw(Error("Invalid credentials"))

@@ -8,7 +8,10 @@ const userRoutes = require('./routes/userRoutes');
 const messageRoutes = require('./routes/messageRoutes')
 require("dotenv").config();//In this way we acces dot.end
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000', // Allow requests from this origin
+    credentials: true // Allow credentials (cookies)
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(userRoutes);

@@ -14,7 +14,9 @@ const Chat = () => {
   
   const setAvatar = async () => {
     try{
-      const result = await axios("http://localhost:5000/api/getUser/" + user_id);
+      const result = await axios("http://localhost:5000/api/getUser/" + user_id, {
+    withCredentials: true
+});
       setCurrentUser(result.data)
       console.log(result.data)
       const user_avatar = result.data.avatarImg;
@@ -31,7 +33,9 @@ const Chat = () => {
 
   const getAllContacts = async () => {
     try {
-      const result = await axios("http://localhost:5000/api/getUsers");
+      const result = await axios("http://localhost:5000/api/getUsers", {
+    withCredentials: true
+});
       setContacts(result.data);
     } catch (err) {
       console.log(err)

@@ -13,7 +13,9 @@ const ChatContainer = ({ chatUser, currentUser }) => {
                 sender: currentUser._id,
                 receiver: chatUser._id,
                 msg: msg
-            })
+            },{
+    withCredentials: true
+})
         } catch (err) {
             console.log("error can't send the message")
         }
