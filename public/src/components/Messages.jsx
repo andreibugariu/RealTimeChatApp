@@ -1,30 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
-import axios from 'axios'
-const Messages = ({ sender, receiver }) => {
+const Messages = ({ sender, receiver, messages }) => {
   
-  const [messages, setMessages] = useState([]);
-
-
- const getMessages = async (senderID, receiverID) => {
-    try {
-        const messages = await axios.get('http://localhost:5000/api/getmsg', {
-            params: { sender: senderID, receiver: receiverID },
-            withCredentials: true
-        });
-        console.log(messages.data); // Assuming you want to log the messages to console
-        setMessages(messages.data) // Return the messages to the caller if needed
-    } catch (error) {
-        console.error('Error getting messages:', error);
-        return []; // Return an empty array or handle the error accordingly
-    }
-};
-
-
-  useEffect( () => {
-    getMessages(sender._id, receiver._id);
-  },[receiver])
-
   return (
     <Container>
      <div className="chat-messages">
